@@ -1,8 +1,11 @@
 import React from "react";
 import NavigationBar from "../../components/NavigationBar"; 
+import SessionHelper  from "../../tools/SessionStorageHelper";
+import Cart from "../../types/Cart";
 
 interface HeaderProps {
     openCart(event: any): void
+    cart: Cart
 }
 
 /**
@@ -16,8 +19,12 @@ class Header extends React.Component<HeaderProps, {}> {
      */
     render() {
         return (
-            <NavigationBar handleClickCart={this.props.openCart} />
+            <NavigationBar handleClickCart={this.props.openCart} cart={this.props.cart}/>
         )
+    }
+
+    componentDidMount = () => {
+        this.setState({numberOfItems: SessionHelper.getCart().getNumberOfItems()})
     }
 }
  

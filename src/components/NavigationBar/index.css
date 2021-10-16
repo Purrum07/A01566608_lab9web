@@ -16,3 +16,10 @@ a.product-list-link:link {
     color: rgb(31, 31, 31) !important;
     text-decoration: none !important;
   }
+
+.cart-number {
+    color: rgb(255, 255, 255) !important;
+    text-decoration: none !important;
+    text-transform: uppercase !important;
+    font-weight:bold !important;
+}
