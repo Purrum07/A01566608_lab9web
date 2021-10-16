@@ -5,21 +5,34 @@ import Sku from "./Sku";
 class Cart {
     lineItems: [LineItem] = [] as any;
 
-    addItem(product: Product, sku: Sku, quantity: number, price: number) : void {
-        const lineItem = {} as LineItem;
-        lineItem.product = product;
-        lineItem.sku = sku;
-        lineItem.quantity = quantity;
-        lineItem.unitPrice = price;
-        lineItem.totalPrice = quantity * price;
+    addItem(product: Product, sku: Sku, quantity: number, price: number): void {
+        var existingSku = false;
+        this.lineItems.forEach((item) => {
+            console.log("Item sku" + item.sku.id);
+            console.log("sku" + sku.id);
+            if (item.sku.id === sku.id) {
+                item.quantity += quantity;
+                item.totalPrice = item.unitPrice * item.quantity;
+                existingSku = true;
+            }
+        })
 
-        this.lineItems.push(lineItem);
+        if (!existingSku) {
+            const lineItem = {} as LineItem;
+            lineItem.product = product;
+            lineItem.sku = sku;
+            lineItem.quantity = quantity;
+            lineItem.unitPrice = price;
+            lineItem.totalPrice = quantity * price;
+
+            this.lineItems.push(lineItem);
+        }
     }
 
     getNumberOfItems() {
         var numberOfItems = 0;
 
-        this.lineItems.forEach( (lineItem) => {
+        this.lineItems.forEach((lineItem) => {
             numberOfItems += lineItem.quantity;
         });
 
@@ -29,7 +42,7 @@ class Cart {
     getSubtotal() {
         var subTotal = 0;
 
-        this.lineItems.forEach( (lineItem) => {
+        this.lineItems.forEach((lineItem) => {
             subTotal += lineItem.totalPrice;
         });
 
@@ -37,11 +50,11 @@ class Cart {
     }
 
     getTax() {
-        return this.getSubtotal() * 0.16;    
+        return this.getSubtotal() * 0.16;
     }
-    
+
     getTotal() {
-        return this.getSubtotal() + this.getTax();    
+        return this.getSubtotal() + this.getTax();
     }
 }
 
