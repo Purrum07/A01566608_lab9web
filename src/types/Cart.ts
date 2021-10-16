@@ -15,7 +15,7 @@ class Cart {
                 item.totalPrice = item.unitPrice * item.quantity;
                 existingSku = true;
             }
-        })
+        });
 
         if (!existingSku) {
             const lineItem = {} as LineItem;
@@ -27,6 +27,18 @@ class Cart {
 
             this.lineItems.push(lineItem);
         }
+    }
+
+    removeItem (sku: Sku): void {
+        var newLineItems: [LineItem] = [] as any;
+        
+        this.lineItems.forEach((item) => {
+            if (item.sku.id !== sku.id) {
+                newLineItems.push(item);
+            }
+        });
+        this.lineItems = newLineItems;
+        
     }
 
     getNumberOfItems() {

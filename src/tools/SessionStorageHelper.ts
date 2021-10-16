@@ -19,7 +19,7 @@ class SessionStorageHelper {
 
     static updateCart(cart: Cart): void {
         sessionStorage.setItem("cart", JSON.stringify(cart));
-    }    
+    }
 }
 
 export default SessionStorageHelper;

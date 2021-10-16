@@ -52,7 +52,10 @@
     text-decoration: line-through;
   }
   
-  .cartButton {
-    background-color: #ff7b00f7 !important;
+  .deleteButton {
+    background-color: #ff1e00f7 !important;
     color: #ffffff !important;
+    border-radius: 50% !important;
+    width: 50px !important;
+    height: 50px !important;
   }

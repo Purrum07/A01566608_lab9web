@@ -1,11 +1,13 @@
 import React from "react";
 import CartInfo from "../../components/CartInfo/CartInfo";
 import Cart from "../../types/Cart";
+import Sku from "../../types/Sku";
 
 interface CartProps {
     isCartVisible: boolean;
     closeCart(event: any): void
     cart: Cart;
+    deleteOrder(event: any, sku: Sku): void;
 }
 
 /**
@@ -19,7 +21,7 @@ interface CartProps {
      */
     render() {
         return (
-            <CartInfo handleClose={this.props.closeCart} open={this.props.isCartVisible} cart={this.props.cart} />
+            <CartInfo handleClose={this.props.closeCart} open={this.props.isCartVisible} cart={this.props.cart} handleDelete={this.props.deleteOrder}/>
         )
     }
 }
