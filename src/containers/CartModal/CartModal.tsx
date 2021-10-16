@@ -1,9 +1,11 @@
 import React from "react";
 import CartInfo from "../../components/CartInfo/CartInfo";
+import Cart from "../../types/Cart";
 
 interface CartProps {
     isCartVisible: boolean;
     closeCart(event: any): void
+    cart: Cart;
 }
 
 /**
@@ -17,7 +19,7 @@ interface CartProps {
      */
     render() {
         return (
-            <CartInfo handleClose={this.props.closeCart} open={this.props.isCartVisible} />
+            <CartInfo handleClose={this.props.closeCart} open={this.props.isCartVisible} cart={this.props.cart} />
         )
     }
 }

@@ -17,11 +17,15 @@ interface ProductState {
     sku: Sku;
 }
 
+interface RoutesProps {
+    openCart(event: any): void;
+}
+
 /**
  * Product Detail Container
  * @extends {Component<Props, State>}
  */
-class ProductDetail extends React.Component<{}, ProductState> {
+class ProductDetail extends React.Component<RoutesProps, ProductState> {
     state = {
         product: {} as Product,
         helper: {} as ProductHelper,
@@ -30,7 +34,7 @@ class ProductDetail extends React.Component<{}, ProductState> {
         sizes: [] as string[],
         selectedSize: '',
         selectedQuantity: 1,
-        sku: {} as Sku
+        sku: {} as Sku,
     }
 
     /**
@@ -128,6 +132,7 @@ class ProductDetail extends React.Component<{}, ProductState> {
         const cart = SessionStorageHelper.getCart();
         cart.addItem(this.state.product, this.state.sku, this.state.selectedQuantity, this.state.sku.salePrice);
         SessionStorageHelper.updateCart(cart);
+        this.props.openCart(event);
     }
 }
 
