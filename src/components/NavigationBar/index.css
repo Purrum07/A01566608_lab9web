@@ -23,3 +23,7 @@ a.product-list-link:link {
     text-transform: uppercase !important;
     font-weight:bold !important;
 }
+
+.MuiBox-root.MuiBox-root-4 {
+  align-items: center;
+}
